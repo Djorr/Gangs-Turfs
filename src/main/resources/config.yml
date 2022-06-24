@@ -1,0 +1,54 @@
+#=========================================================#
+#                   General configuration                 #
+#=========================================================#
+
+# What timezone should we use?
+# https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+TIMEZONE: "Europe/Amsterdam"
+
+# What date format should we use?
+# https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+DATE_FORMAT: "dd.MM HH:mm"
+
+#=========================================================#
+#                    Gang configuration                   #
+#=========================================================#
+GANG:
+  # This is the prize for creating a gang (must be a double)
+  PRIZE_CREATING_GANG: 1000.00
+
+#=========================================================#
+#                    Turf configuration                   #
+#=========================================================#
+
+TURF:
+  # This is the cooldown between starting a new turf after one is finished, cooldown is in seconds
+  COOLDOWN_BETWEEN_STARTING_NEW_TURF: 900
+  # Before we can start a turf, there must be a minimum players size online with a gang
+  MINIMUM_PLAYERS_BEFORE_STARTING: 2
+  # The cooldown between sending message that a turf is active
+  MESSAGE_COOLDOWN: 30
+
+  # The default winnings of an turf (Must be a double)
+  WINNINGS: 150000.00
+  # Default turf duration in seconds
+  DURATION: 90
+
+  # The region we should check if it is a turf
+  REGIONS_START_WITH: "turf-"
+
+#=========================================================#
+#                  Combat configuration                   #
+#=========================================================#
+
+COMBAT_TAG:
+  # Combat tag duration in seconds
+  DURATION: 30
+  # Should we disable enderchests while in combat?
+  DISABLE_ENDERCHESTS: true
+  # What commands should we disable during combat tag?
+  DISABLED_COMMANDS:
+    - "/spawn"
+    - "/warp"
+    - "/ec"
+    - "/enderchest"

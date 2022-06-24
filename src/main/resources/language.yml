@@ -1,0 +1,234 @@
+PREFIX: ""
+SERVICE_PREFIX: "&e&lService &7» &f"
+GANG_PREFIX: "&e&lGang &7» &f"
+TURF_PREFIX: "&e&lTurf &7» &f"
+
+COMMANDS:
+  FOR_PLAYERS_ONLY: "&eThis command is for &eplayer &euse only!"
+  FOR_CONSOLE_ONLY: "&eThis command is for &econsole &euse only!"
+  NO_PERMISSION: "&eYou have no &epermission &efor this command!"
+  PLAYER_NOT_ONLINE: "&ePlayer &e<player> &eis not online!"
+  PLAYER_NOT_FOUND: "&ePlayer &e<player> &ehas never played before!"
+  COMMAND_NOT_FOUND: "&eCommand &e<command> &ecould not be found!"
+  INVALID_NUMBER: "&ePlease use a valid &einteger &evalue."
+  INVALID_DURATION: "&ePlease use a valid &etime duration&e."
+  COOLDOWN: "&eYou are currently on command cooldown."
+
+BLOCKS:
+  PLACEMENT_DISABLED: "&eYou are not allowed to place &e<block>&e!"
+
+GANGS:
+  NAME_TOO_SHORT: "&7Name did not reach &eminimum &7gang name length!"
+  NAME_TOO_BIG: "&7Name exceeded &emaximum &7gang name length!"
+  BLOCKED_GANG_NAME: "&7This gang name is &eforbidden&7!"
+  NAME_NOT_ALPHANUMERIC: "&7Gang name must be &ealphanumeric&7!"
+  GANG_ALREADY_EXISTS: "&7Gang with name &e<name> &7already exists!"
+  GANG_DOESNT_EXIST: "&7Gang with search argument &e<argument> &7doesn't exist!"
+  ALREADY_IN_GANG_SELF: "&7You are already in &egang&7."
+  ALREADY_IN_GANG_OTHERS: "&7Player &e<player> &7is already in your gang."
+  NOT_IN_GANG: "&7Player &e<player> &7is not in a gang."
+  NOT_IN_GANG_SELF: "&7Je bent niet in een &egang&7."
+  NOT_IN_GANG_OTHERS: "&7Player &e<player> &7is not in your gang."
+  MUST_BE_LEADER: "&7You must be gang &eleader&7!"
+  NO_PERMISSION: "&7You must be at least &e<role>&7."
+  NO_PERMISSION_ROLE: "&7Player &e<player> &7has equal or higher &erole &7than you."
+  MEMBER_ONLINE: "&eMember &7<player> &ecame online."
+  MEMBER_OFFLINE: "&eMember &7<player> &ewent offline."
+  MEMBER_DEATH: "&eMember &b<player> &edied! &7(Loss: &e<dtrLoss>&7) &7(Dtr: <dtr>&7/<maxDtr>&7)"
+  ALLIES_DISABLED: "&eAllies &7are disabled this map."
+  DENY_DAMAGE_ALLIES: "&7You cannot damage <player>&7."
+  ENDERPEARLS_DISABLED: "&7Enderpearls are disabled in <gang>'s &7territory!"
+  NO_LONGER_FROZEN: "&7Your &egang &7is no longer &efrozen&7."
+  PROTECTION_MESSAGES:
+    DENY_BUILD: "&7You cannot build in the territory of <gang>&7."
+    DENY_INTERACT: "&7You cannot do this in the territory of <gang>&7."
+  CREATE_COMMAND:
+    USAGE: "&eUsage: /gang create <name>"
+    CREATED: "&7[&b*&7] &7Gang &e<name> &7was created by &e<player>"
+    COOLDOWN: "&7You can create new &egang &7in &b<time>&7."
+  DEMOTE_COMMAND:
+    USAGE: "&eUsage: /gang demote <player>"
+    DEMOTED: "&e<player> &7has been demoted to &e<role>&7."
+    MIN_DEMOTE: "&7Player is already &elowest &7role."
+    CANNOT_DEMOTE_SELF: "&7You cannot &edemote &7yourself."
+  DEPOSIT_COMMAND:
+    USAGE: "&eUsage: /gang deposit <amount>"
+    DEPOSITED: "&e<player> &7deposited &b$<amount> &7into gang's balance."
+    CAN_NOT_DEPOSIT_ZERO: "&7You cannot deposit &e$0&7!"
+    NOT_ENOUGH_MONEY: "&7You only have &e$<amount>&7!"
+  DISBAND_COMMAND:
+    DISBANDED: "&7[&b*&7] &7Gang &e<name> &7was disbanded by &e<player>"
+    CLAIM_MONEY_REFUNDED: "&7You were refunded &e$<amount> &7due to claim removal."
+    RAIDABLE_DENY: "&7You cannot &edisband &7your Gang while &eraidable&7!"
+    CANNOT_DISBAND_WHILE_REGENERATING: "&7You cannot disband your &eGang &7when it is &eregenerating&7!"
+  FORCE_DEMOTE_COMMAND:
+    USAGE: "&eUsage: /gang forcedemote <player>"
+    DEMOTED_SENDER: "&7You have force demoted &e<player> &7to &e<role>&7."
+    DEMOTED_GANG: "&e<player> &7has been force demoted to &e<role>&7."
+    MIN_DEMOTE: "&7Player is already &elowest &7role."
+    CANNOT_DEMOTE_LEADER: "&7You cannot force demote &eGang leader&7."
+  FORCE_JOIN_COMMAND:
+    USAGE: "&eUsage: /gang forcejoin <gang>"
+    JOINED: "&7Player &e<player> &7has force joined Gang."
+  FORCE_KICK_COMMAND:
+    USAGE: "&eUsage: /gang forcekick <player>"
+    CANNOT_KICK_LEADER: "&7You cannot force kick &eGang leader&7."
+    KICKED_SENDER: "&7You have force kicked &e<player> &7from Gang &e<gang>&7."
+    KICKED_SELF: "&7You have been force kicked from Gang &e<name>&7."
+    KICKED_OTHERS: "&7Player &e<player> &7has been force kicked from Gang."
+  FORCE_LEADER_COMMAND:
+    USAGE: "&eUsage: /gang forceleader <player>"
+    CHANGED_SENDER: "&7You promoted &e<player> &7to Gang leader of &e<gang>&7."
+    CHANGED_GANG: "&e<sender> &7forcefully transferred Gang leadership to &e<player>&7."
+    ALREADY_LEADER: "&7Player &e<player> &7is already &eGang leader&7."
+  FORCE_PROMOTE_COMMAND:
+    USAGE: "&eUsage: /gang forcepromote <player>"
+    PROMOTED_SENDER: "&7You have force promoted &e<player> &7to &e<role>&7."
+    PROMOTED_GANG: "&e<player> &7has been promoted to &e<role>&7."
+    MAX_PROMOTE: "&7Player is already &ehighest role&7."
+  FORCE_RENAME_COMMAND:
+    USAGE: "&eUsage: /gang forcerename <gang> <name>"
+    RENAMED: "&7[&b*&7] &7Gang &e<name> &7was renamed to &e<newName>"
+    SAME_NAME: "&7Gang already has name &e<name>&7."
+  HELP_COMMAND:
+    PAGE_NOT_FOUND: "&7Page &e<page> &7not found."
+    PAGES:
+      1:
+        - "&7&m                                                                                "
+        - " &e&lGang Help &8(&6Page 1/2&8)"
+        - ""
+        - " &f/gang invite &8- &7Invite een speler voor jou gang."
+        - " &f/gang uninvite &8- &7Maak een invite ongedaan."
+        - " &f/gang kick &8- &7Kick een speler uit je gang."
+        - " &f/gang promote &8- &7Promote een gang lid."
+        - " &f/gang demote &8- &7Demote een gang lid."
+        - ""
+        - " &eTo view other pages, use &f/gang help <page>"
+        - "&7&m                                                                                "
+      2:
+        - "&7&m                                                                                "
+        - " &e&lGang Help &8(&6Page 2/2&8)"
+        - ""
+        - " &f/gang join &8- &7Join een gang."
+        - " &f/gang leave &8- &7Verlaat een gang."
+        - ""
+        - " &eTo view other pages, use &f/gang help <page>"
+        - "&7&m                                                                                "
+  INVITE_COMMAND:
+    USAGE: "Usage: /gang invite <player>"
+    INVITED_SELF: "&e<player> &7has invited you to Gang &e<name>&7.\n\n\n&e&lClick Here to join the Gang\n"
+    INVITED_OTHERS: "&7Player &e<player> &7has been invited to Gang."
+    ALREADY_INVITED: "&7Player &e<player> &7is already invited to Gang."
+    GANG_FULL: "&7Your &eGang &7already has max member count."
+    HOVER_TEXT: "&7Click to join <gang>"
+    GANG_MEMBERS_STILL_IN_COMBAT: "&fYou can't invite people because &e<players>&fis/are still in combat."
+    CANNOT_INVITE_WHILE_REGENERATING: "&7You cannot invite <player> &7when your Gang is &eregenerating&7!"
+  JOIN_COMMAND:
+    USAGE: "&eUsage: /gang join <gang>"
+    JOINED: "&7Player &e<player> &7has joined Gang."
+    NOT_INVITED: "&7You are not invited to Gang &e<name>&7."
+    GANG_FULL: "&7Gang &e<gang> &7already has max member count."
+    CANNOT_JOIN_WHILE_REGENERATING: "&7You cannot join <gang> &7Gang when it is &eregenerating&7!"
+  KICK_COMMAND:
+    USAGE: "&eUsage: /gang kick <player>"
+    KICKED_SELF: "&7You have been kicked from Gang &e<name>&7."
+    KICKED_OTHERS: "&7Player &e<player> &7has been kicked from Gang."
+  LEAVE_COMMAND:
+    LEFT_SELF: "&7You have left Gang &e<name>&7."
+    LEFT_OTHERS: "&7Player &e<player> &7has left the Gang."
+    LEADER_LEAVE: "&7You are &eGang leader &7and therefore cannot leave this Gang."
+    CANNOT_LEAVE:
+      WHILE_REGENERATING: "&7You cannot leave your Gang when it is &eregenerating&7!"
+      WHILE_IN_OWN_CLAIM: "&7You cannot leave your Gang while in &eown claim&7!"
+  PROMOTE_COMMAND:
+    USAGE: "&eUsage: /gang promote <player>"
+    PROMOTED: "&e<player> &7has been promoted to &e<role>&7."
+    MAX_PROMOTE: "&7Player is already &ehighest &7role."
+    CANNOT_PROMOTE_SELF: "&7You cannot &epromote &7yourself."
+  SAVE_COMMAND:
+    SAVED: "&7Successfully &esaved &7all Gangs data."
+  SHOW_COMMAND:
+    HOVER_TEXT: "&7Click to view Gang info of &e<gang>"
+    NAME_FORMAT: "<player>&7[&e<kills>&7]&7"
+    PLAYER_GANG_MESSAGE:
+      - "&7&m                                                                                "
+      - " &e<gang> &7[&e<online-count>/<gang-size>] &f- &fSafehouse: &e<safehouse-location>"
+      - " &fLeider: &e<leader>"
+      - " &fCo-Leider(s): &e<captains>"
+      - " &fLeden: &e<members>"
+      - " &fKills: &e<kills>"
+      - " &fDeaths: &e<deaths>"
+      - " &fKDR: &e<gang-kdr>"
+      - " &fAangemaakt op: &e<data>"
+  LIST_COMMAND:
+    PAGE_NOT_FOUND: "&7Er zijn alleen &e<number> &7pagina(s)."
+    GANG_FORMAT: " &f<number>. <name> &8[&e<online-count>&8/&7<total-count>&8]"
+    HEADER:
+      - "&7&m                                                                                "
+      - " &e&lGang lijst &8(&7Pagina &f<page>&8/&f<pageTotal>&8)"
+      - " &8» &eGang&7, &fOnline&7"
+    FOOTER:
+      - "&7&m                                                                                "
+  TP_HERE_COMMAND:
+    USAGE: "&eUsage: /gang tphere <gang>"
+    TELEPORTED_SENDER: "&7You teleported &e<gang> &7to your location."
+    TELEPORTED_GANG: "&7Your whole Gang was teleported to &e<player>&7."
+  UNINVITE_COMMAND:
+    USAGE: "&eUsage: /gang uninvite <player>"
+    UNINVITED: "&7Player &e<player> &7has been uninvited from Gang."
+    UNINVITE_ALL: "&7Player &e<player> &7has removed all player invitations."
+    NOT_INVITED: "&7Player &e<player> &7is not invited to Gang."
+
+COMBAT_TAG:
+  COMMAND_DENY: "&7This command is &edisabled &7during pvp!"
+  TAG_EXPIRED: "&7Your &ecombat tag &7cooldown has expired."
+  ENDERCHEST_DENY: "&7You cannot use &eenderchest &7while in combat!"
+  BLOCK_BREAK_DENY: "&7You cannot &ebreak blocks &7while in combat!"
+  BLOCK_PLACE_DENY: "&7You cannot &eplace blocks &7while in combat!"
+
+COMBAT:
+  HELP_COMMAND:
+    PAGE_NOT_FOUND: "&7Page &e<page> &7not found."
+    PAGES:
+      1:
+        - "&7&m                                                                                "
+        - " &e&lCombat Help &8(&6Page 1/1&8)"
+        - ""
+        - " &f/ct check &8- &7Check someones cooldown."
+        - " &f/ct cancel &8- &7Cancel a cooldown."
+        - ""
+        - " &eTo view other pages, use &f/ct help <page>"
+        - "&7&m                                                                                "
+
+NPCS:
+  HELP_COMMAND:
+    PAGE_NOT_FOUND: "&7Page &e<page> &7not found."
+    PAGES:
+      1:
+        - "&7&m                                                                                "
+        - " &e&lNPC Help &8(&6Page 1/1&8)"
+        - ""
+        - " &f/gnpc create <type> &8- &7Maakt een npc."
+        - " &f/gnpc remove <type> &8- &7Verwijderd een npc."
+        - " &f/gnpc list &8- &7Een lijst van types."
+        - ""
+        - " &eTo view other pages, use &f/gnpc help <page>"
+        - "&7&m                                                                                "
+  PREFIX: "&aNPC &8» "
+  NPC:
+    CREATED: "&fYou succesfully created the npc <npcName>"
+    REMOVED: "&fYou succesfully removed the npc <npcName>"
+
+TURF:
+  HELP_COMMAND:
+    PAGE_NOT_FOUND: "&7Page &e<page> &7not found."
+    PAGES:
+      1:
+        - "&7&m                                                                                "
+        - " &e&lTurf Help &8(&6Page 1/1&8)"
+        - ""
+        - " &f/turf start <tijd> <prijs> &8- &7Start de turf."
+        - " &f/turf stop &8- &7Stopt de actieve turf"
+        - ""
+        - " &eTo view other pages, use &f/npc help <page>"
+        - "&7&m                                                                                "

@@ -1,0 +1,12 @@
+name: GangsTurfs
+version: ${project.version}
+main: nl.rubixstudios.gangsturfs.GangsTurfs
+authors: [Djorr]
+depends:
+  - MinetopiaSDB
+  - Vault
+  - Essentials
+  - WorldEdit
+  - WorldGuard
+  - ProtocolLib
+  - Citizens
