@@ -29,7 +29,6 @@ import nl.rubixstudios.gangsturfs.utils.gson.GangTypeAdapter;
 import nl.rubixstudios.gangsturfs.utils.gson.LocationTypeAdapter;
 import nl.rubixstudios.gangsturfs.utils.gson.PlayerTypeAdapter;
 import nl.rubixstudios.gangsturfs.utils.nms.NmsUtils;
-import nl.rubixstudios.gangsturfs.utils.worldguard.DBUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
@@ -71,11 +70,6 @@ public class GangsTurfs extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-
-//        if (!DBUtil.verifiedServer()) {
-//            DBUtil.connectServer();
-//            return;
-//        }
 
         final RegisteredServiceProvider<Economy> economyProvider = GangsTurfs.getInstance().getServer().getServicesManager().getRegistration(Economy.class);
         if (economyProvider != null) {
