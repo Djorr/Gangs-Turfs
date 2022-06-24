@@ -72,13 +72,16 @@ public class NPCController implements Listener, ManagerEnabler {
 
     public void spawnNpc(NPCData npcData) {
         final NPC customNpc = CitizensAPI.getNPCRegistry().getByUniqueId(npcData.getNpcUuid());
+        if (customNpc == null) return;
+
         Bukkit.getScheduler().scheduleSyncDelayedTask(GangsTurfs.getInstance(), () -> customNpc.spawn(npcData.getNpcLocation()));
     }
 
     public void despawnNpc(NPCData npcData, boolean destroy) {
         final NPC customNpc = CitizensAPI.getNPCRegistry().getByUniqueId(npcData.getNpcUuid());
-        Bukkit.getScheduler().scheduleSyncDelayedTask(GangsTurfs.getInstance(), customNpc::despawn);
+        if (customNpc == null) return;
 
+        Bukkit.getScheduler().scheduleSyncDelayedTask(GangsTurfs.getInstance(), customNpc::despawn);
         if (destroy) CitizensAPI.getNPCRegistry().deregister(customNpc);
     }
 }
