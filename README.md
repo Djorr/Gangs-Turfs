@@ -1,7 +1,7 @@
 **Note: This plugin is Dutch by default. It isn't possible at the moment to change the language, maybe in the future.**
 
 # Game Informatie:
-Gangs & Turfs is de ultieme plugin die games van GTA toevoegt aan de Minetopia game. Dat maakt de Minetopia game nog veel leuker!
+Gangs & Turfs is de ultieme minecraft plugin die games van GTA toevoegt aan de Minetopia minecraft gamemode. Dat maakt de Minetopia gamemode nog veel leuker!
 
 Dit is een plugin addon die alleen werkt als je MinetopiaSDB hebt geinstalleerd in je server. MinetopiaSDB is gemaakt door MrWouter. Deze plugin is gemaakt door mij.
 
