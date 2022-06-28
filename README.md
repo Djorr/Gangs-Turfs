@@ -23,6 +23,8 @@ Stap 4: Je hebt nu succesvol een turf aangemaakt!
 # Vereisten:
 Voordat je gebruik kunt maken van deze plugin addon moet MinetopiaSDB geinstalleerd zijn op je server. Verder heb je ook de volgende plugins nodig: Vault, Essentials, WorldEdit (FastAsyncWorldEdit mag ook) en WorldGuard.
 
+Je kunt de juiste vereisten plus versies downloaden op de spigotmc pagina: https://www.spigotmc.org/resources/gangs-turfs-minetopiasdb-addon-supports-1-12-1-12-2.102879/
+
 # Mogelijkheden:
 * Je kunt gangs aanmaken en verwijderen.
 * Je kunt spelers inviten voor je gang en ook kicken uit je gang.
