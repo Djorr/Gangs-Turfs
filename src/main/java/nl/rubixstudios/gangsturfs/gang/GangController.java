@@ -223,7 +223,10 @@ public class GangController implements Listener {
 
         final String[] args = event.getMessage().split(" ");
         if (args.length != 1 || args[0].length() > 6) {
-            final TextComponent textComponent = new TextComponent(Language.GANG_PREFIX + Color.translate("&fJe gang naam mag geen spaties bevatten of is langer dan 6 characters! "));
+            final TextComponent textComponent = new TextComponent(Language.GANG_PREFIX + Color.translate("&fJe gang naam mag geen spaties bevatten of is korter dan <min> of langer dan <max> characters! "
+                    .replace("<min>", "" + Config.GANG_NAME_MINIMUM_LENGTH)
+                    .replace("<max>", "" + Config.GANG_NAME_MAXIMUM_LENGTH)
+            ));
 
             final TextComponent textComponent1 = new TextComponent(Color.translate("&8(&cAnnuleren&8)"));
             textComponent1.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder("Klik hier om te annuleren!").create()));
@@ -233,9 +236,11 @@ public class GangController implements Listener {
             return;
         }
 
-        if (!GangsTurfs.getInstance().getEconomy().has(player, Config.GANG_PRIZE)) {
+        if (!GangsTurfs.getInstance().getEconomy().has(player, Config.GANG_PRIZE_CREATING_GANG)) {
             this.creatingGangCache.remove(creatingGangObject);
-            player.sendMessage(Language.GANG_PREFIX + Color.translate("&cJe hebt niet genoeg om een gang te starten.."));
+            player.sendMessage(Language.GANG_PREFIX + Color.translate("&cJe hebt niet genoeg geld om een gang te starten.. (<money>)"
+                    .replace("<money>", "€" + Config.GANG_PRIZE_CREATING_GANG)
+            ));
             return;
         }
 
@@ -245,10 +250,10 @@ public class GangController implements Listener {
         }
 
         this.createPlayerGang(args[0], player);
-        GangsTurfs.getInstance().getEconomy().withdrawPlayer(player, Config.GANG_PRIZE);
+        GangsTurfs.getInstance().getEconomy().withdrawPlayer(player, Config.GANG_PRIZE_CREATING_GANG);
         player.sendMessage(Language.GANG_PREFIX + Color.translate("&fJe hebt succesvol de gang &a<gang> &faangemaakt! &8(&c-€<prijs>&8)"
                 .replace("<gang>", args[0])
-                .replace("<prijs>", "" + Config.GANG_PRIZE)));
+                .replace("<prijs>", "" + Config.GANG_PRIZE_CREATING_GANG)));
         this.creatingGangCache.remove(creatingGangObject);
     }
 
@@ -259,7 +264,9 @@ public class GangController implements Listener {
         final PlayerGang gang = GangManager.getInstance().getPlayerGang(joinedPlayer);
         if(gang == null) return;
 
-        gang.sendMessage(Language.GANGS_MEMBER_ONLINE.replace("<player>", joinedPlayer.getName()));
+        if (Config.GANG_MESSAGES_SENT_MEMBER_ONLINE_MESSAGE) {
+            gang.sendMessage(Language.GANGS_MEMBER_ONLINE.replace("<player>", joinedPlayer.getName()));
+        }
     }
 
     @EventHandler
@@ -267,7 +274,9 @@ public class GangController implements Listener {
         final PlayerGang gang = GangManager.getInstance().getPlayerGang(event.getPlayer());
         if(gang == null) return;
 
-        gang.sendMessage(Language.GANGS_MEMBER_OFFLINE.replace("<player>", event.getPlayer().getName()));
+        if (Config.GANG_MESSAGES_SENT_MEMBER_OFFLINE_MESSAGE) {
+            gang.sendMessage(Language.GANGS_MEMBER_OFFLINE.replace("<player>", event.getPlayer().getName()));
+        }
     }
 
     @EventHandler

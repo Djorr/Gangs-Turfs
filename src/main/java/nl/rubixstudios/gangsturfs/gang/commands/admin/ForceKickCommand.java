@@ -14,7 +14,7 @@ import org.bukkit.command.CommandSender;
 public class ForceKickCommand extends SubCommand {
 
     public ForceKickCommand() {
-        super("forcekick", "turtle.GANGS.forcekick");
+        super("forcekick", "gangturfs.gang.forcekick");
 
         this.setExecuteAsync(true);
     }

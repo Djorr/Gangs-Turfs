@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 public class ForceRenameCommand extends SubCommand {
 
     public ForceRenameCommand() {
-        super("forcerename", "turtle.GANGS.forcerename");
+        super("forcerename", "gangturfs.gang.forcerename");
     }
 
     @Override

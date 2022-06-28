@@ -1,54 +1,84 @@
 #=========================================================#
-#                   General configuration                 #
-#=========================================================#
-
-# What timezone should we use?
-# https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-TIMEZONE: "Europe/Amsterdam"
-
-# What date format should we use?
-# https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
-DATE_FORMAT: "dd.MM HH:mm"
-
-#=========================================================#
-#                    Gang configuration                   #
+#                    Gang configuratie                    #
 #=========================================================#
 GANG:
-  # This is the prize for creating a gang (must be a double)
+  # Wil je het gang systeem gebruiken?
+  ENABLED: true
+
+  # Dit is de prijs voor het aanmaken van een gang (moet een double zijn, voorbeeld: 1000.00)
   PRIZE_CREATING_GANG: 1000.00
 
+  MESSAGES:
+    # Verstuurd een bericht naar alle gang members dat een member online is gekomen
+    SENT_ONLINE_MESSAGE: true
+    # Verstuurd een bericht naar alle gang members dat een member offline is gegaan
+    SENT_OFFLINE_MESSAGE: true
+
+  OPTIONS:
+    SHOW_COMMAND:
+      # Wil je dat spelers gebruik kunnen maken van /gang show <name> om hun gang informatie te zien?
+      ENABLED_FOR_PLAYERS: false
+      # Wil je dat staff gebruik kan maken van /gang show <name> om anderen gang informatie te zien?
+      ENABLED_FOR_STAFF: true
+    NAMES:
+      # De minimale lengte van een gang naam
+      GANG_NAME_MINIMUM_LENGTH: 5
+      # De maximale lengte van een gang naam
+      GAME_NAME_MAXIMUM_LENGTH: 10
+      # Gang namen die niet toegestaan zijn
+      GANG_NAME_DISALLOWED_NAMES:
+        - "homo"
+        - "kanker"
+    MEMBERS:
+      # Het maximaal aantal leden dat een gang mag hebben.
+      MAX_MEMBERS: 5
+
 #=========================================================#
-#                    Turf configuration                   #
+#                    Turf configuratie                    #
 #=========================================================#
 
 TURF:
-  # This is the cooldown between starting a new turf after one is finished, cooldown is in seconds
+  # Wil je het turf systeem gebruiken?
+  ENABLED: true
+
+  # Dit is de cooldown voordat je een nieuwe turf kan starten, de cooldown is in seconden (60 = 1 minuut)
   COOLDOWN_BETWEEN_STARTING_NEW_TURF: 900
-  # Before we can start a turf, there must be a minimum players size online with a gang
+  # Dit is het minimum aantal gangs dat online moet zijn voordat je een turf kan starten
   MINIMUM_PLAYERS_BEFORE_STARTING: 2
-  # The cooldown between sending message that a turf is active
-  MESSAGE_COOLDOWN: 30
+  # Dit is de cooldown voordat er opnieuw een bericht wordt gestuurd dat een turf actief is, de cooldown is in seconden (60 = 1 minuut)
+  TURF_ACTIVE_MESSAGE_COOLDOWN: 30
 
-  # The default winnings of an turf (Must be a double)
-  WINNINGS: 150000.00
-  # Default turf duration in seconds
-  DURATION: 90
+  # Het bedrag dat je wint als een turf voorbij is (moet een double zijn, voorbeeld: 1000.00)
+  WINNINGS_FOR_EACH_GANG: 150000.00
+  # De tijd hoelang een turf duurt, de cooldown is in seconden (60 = 1 minuut)
+  GAME_DURATION: 90
 
-  # The region we should check if it is a turf
+  # De naam waarmee een turf region van worldguard start (hiermee controleren we of het een turf is)
   REGIONS_START_WITH: "turf-"
 
 #=========================================================#
-#                  Combat configuration                   #
+#                  Combat configuratie                    #
 #=========================================================#
 
 COMBAT_TAG:
-  # Combat tag duration in seconds
+  # Wil je dit combat systeem gebruiken?
+  ENABLED: false
+  # Hoelang de combat tag duurt, de cooldown is in seconden (60 = 1 minuut)
   DURATION: 30
-  # Should we disable enderchests while in combat?
+
+  # Moeten wij enderchests uitschakelen als je in combat bent?
   DISABLE_ENDERCHESTS: true
-  # What commands should we disable during combat tag?
+
+  # Dit zijn de item id's die disabled moeten worden (zoals de rugzakken, koffers etc)
+  DISABLED_ENDERCHEST_ITEMS:
+    - ""
+    - ""
+
+  # Welke commands mogen niet werken als je in combat bent?
   DISABLED_COMMANDS:
     - "/spawn"
     - "/warp"
     - "/ec"
     - "/enderchest"
+  # Moeten de bovenstaande commands ook werken op mensen die OP of * permissions hebben?
+  DISABLE_OP_COMMANDS: false

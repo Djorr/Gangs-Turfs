@@ -1,12 +1,15 @@
 name: GangsTurfs
 version: ${project.version}
+description: "Gangs & Turfs is de ultieme plugin die games van GTA toegevoegd worden aan de Minetopia game. Dat maakt de Minetopia game nog veel leuker!"
+author: Djorr
+website: https://www.spigotmc.org/resources/gangs-turfs-1-12-2-minetopiasdb-addon.102879/
 main: nl.rubixstudios.gangsturfs.GangsTurfs
-authors: [Djorr]
+prefix: GangsTurfs
 depends:
-  - MinetopiaSDB
   - Vault
-  - Essentials
   - WorldEdit
   - WorldGuard
   - ProtocolLib
   - Citizens
+softdepend:
+  - MinetopiaSDB

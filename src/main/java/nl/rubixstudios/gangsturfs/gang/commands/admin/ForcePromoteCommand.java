@@ -12,7 +12,7 @@ import org.bukkit.command.CommandSender;
 public class ForcePromoteCommand extends SubCommand {
 
     public ForcePromoteCommand() {
-        super("forcepromote", "gangwars.gangs.forcepromote");
+        super("forcepromote", "gangturfs.gang.forcepromote");
 
         this.setExecuteAsync(true);
     }

@@ -45,8 +45,8 @@ public class GangMenuListener implements Listener {
             }
 
             final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(player.getUniqueId());
-            if (!GangsTurfs.getInstance().getEconomy().has(offlinePlayer, Config.GANG_PRIZE)) {
-                player.sendMessage(Language.GANG_PREFIX + Color.translate("&cJe hebt &f€<money> &cnodig om een gang te starter!".replace("<money>", "" + Config.GANG_PRIZE)));
+            if (!GangsTurfs.getInstance().getEconomy().has(offlinePlayer, Config.GANG_PRIZE_CREATING_GANG)) {
+                player.sendMessage(Language.GANG_PREFIX + Color.translate("&cJe hebt &f€<money> &cnodig om een gang te starten!".replace("<money>", "" + Config.GANG_PRIZE_CREATING_GANG)));
                 return;
             }
 

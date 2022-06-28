@@ -1,7 +1,7 @@
 package nl.rubixstudios.gangsturfs.utils.item;
 
 import nl.rubixstudios.gangsturfs.data.Config;
-import nl.rubixstudios.gangsturfs.games.turf.TurfData;
+import nl.rubixstudios.gangsturfs.turf.TurfData;
 import nl.rubixstudios.gangsturfs.utils.Color;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -17,7 +17,7 @@ public class PreBuildItems {
                 .setName(Color.translate("&aGang aanmaken"))
                 .setLore(Arrays.asList(
                         Color.translate("&7 "),
-                        Color.translate("&fPrijs&7: &6€<prijs>".replace("<prijs>", "" + Config.GANG_PRIZE)),
+                        Color.translate("&fPrijs&7: &6€<prijs>".replace("<prijs>", "" + Config.GANG_PRIZE_CREATING_GANG)),
                         Color.translate(""),
                         Color.translate("&7Maak een eigen gang aan met jou vrienden"),
                         Color.translate("&7en doe mee aan turf events!"),
@@ -45,8 +45,8 @@ public class PreBuildItems {
     // Turf
 
     public static ItemStack readyToStartGameItem(TurfData turfData) {
-        final boolean stillCooldown = System.currentTimeMillis() - turfData.getTurfEndedTime() < Config.TURF_COOLDOWN * 1000L;
-        final long cooldownTime = (Config.TURF_COOLDOWN * 1000L) - (System.currentTimeMillis() - turfData.getTurfEndedTime());
+        final boolean stillCooldown = System.currentTimeMillis() - turfData.getTurfEndedTime() < Config.TURF_COOLDOWN_BETWEEN_STARTING_NEW_TURF * 1000L;
+        final long cooldownTime = (Config.TURF_COOLDOWN_BETWEEN_STARTING_NEW_TURF * 1000L) - (System.currentTimeMillis() - turfData.getTurfEndedTime());
 
         if (stillCooldown) {
             return new ItemBuilder(Material.GOLD_BLOCK, 1)

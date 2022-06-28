@@ -132,26 +132,13 @@ public class PlayerGang extends Gang {
         return this.kdr = (this.getDeaths() != 0) ? (double) this.getKills() / (double) this.getDeaths() : this.getKills();
     }
 
-    public void onDeath(Player player) {
-        final Player killer = player.getKiller();
-
-        final PlayerGang playerGang = GangManager.getInstance().getPlayerGang(player.getUniqueId());
-
-        PlayerGang killerGang = null;
-        if (killer != null) killerGang = GangManager.getInstance().getPlayerGang(killer.getUniqueId());
-
-        if (playerGang != null) playerGang.addDeath();
-        if (killerGang != null) killerGang.addKill();
-
-        this.sendMessage(Language.GANGS_MEMBER_DEATH);
-    }
-
     public void showInformation(CommandSender sender) {
         AtomicReference<String> leader = new AtomicReference<>();
         StringJoiner coLeaders = new StringJoiner(", ");
-        StringJoiner captains = new StringJoiner(", ");
+        StringJoiner advisors = new StringJoiner(", ");
+        StringJoiner hitmans = new StringJoiner(", ");
+        StringJoiner suppliers = new StringJoiner(", ");
         StringJoiner members = new StringJoiner(", ");
-        StringJoiner allies = new StringJoiner(", ");
 
         AtomicInteger totalKills = new AtomicInteger();
         AtomicInteger totalDeaths = new AtomicInteger();
@@ -166,8 +153,10 @@ public class PlayerGang extends Gang {
 
                 switch(member.getRole()) {
                     case LEADER: leader.set(this.getPlayerNameFormatted(member, userdata)); break;
-                    case CAPTAIN: captains.add(this.getPlayerNameFormatted(member, userdata)); break;
-                    case MEMBER: members.add(this.getPlayerNameFormatted(member, userdata)); break;
+                    case ADVISOR: advisors.add(this.getPlayerNameFormatted(member, userdata)); break;
+                    case HITMAN: hitmans.add(this.getPlayerNameFormatted(member, userdata)); break;
+                    case SUPPLIER: suppliers.add(this.getPlayerNameFormatted(member, userdata)); break;
+                    case THUG: members.add(this.getPlayerNameFormatted(member, userdata)); break;
                 }
             }
         });
@@ -182,9 +171,10 @@ public class PlayerGang extends Gang {
         showMessage.removeIf(line -> line.contains("<co-leaders>") && coLeaders.length() == 0
                 || line.contains("<autoRevive>") && !isSameFaction
                 || line.contains("<lives>") && !isSameFaction
-                || line.contains("<captains>") && captains.length() == 0
-                || line.contains("<members>") && members.length() == 0
-                || line.contains("<allies>") && allies.length() == 0);
+                || line.contains("<advisors>") && advisors.length() == 0
+                || line.contains("<hitmans>") && hitmans.length() == 0
+                || line.contains("<suppliers>") && suppliers.length() == 0
+                || line.contains("<members>") && members.length() == 0);
 
         showMessage.forEach(line -> sender.sendMessage(line
                 .replace("<gang>", this.getName(sender))
@@ -192,7 +182,9 @@ public class PlayerGang extends Gang {
                 .replace("<gang-size>", String.valueOf(this.members.size()))
                 .replace("<safehouse-location>", this.safeHouse == null ? "Geen" : this.getSafeHouseString())
                 .replace("<leader>", leader.get())
-                .replace("<captains>", captains.toString())
+                .replace("<advisors>", advisors.toString())
+                .replace("<hitmans>", hitmans.toString())
+                .replace("<suppliers>", suppliers.toString())
                 .replace("<members>", members.toString())
                 .replace("<kills>", String.valueOf(this.getKills()))
                 .replace("<deaths>", String.valueOf(this.getDeaths()))

@@ -12,7 +12,7 @@ import java.util.Collections;
 public class TpHereCommand extends SubCommand {
 
     public TpHereCommand() {
-        super("tphere", Collections.singletonList("teleporthere"), "turtle.GANGS.tphere", true);
+        super("tphere", Collections.singletonList("teleporthere"), "gangturfs.gang.tphere", true);
     }
 
     @Override

@@ -1,9 +1,7 @@
 package nl.rubixstudios.gangsturfs.commands.manager;
 
 import nl.rubixstudios.gangsturfs.GangsTurfs;
-import nl.rubixstudios.gangsturfs.commands.admin.GangWarsCommand;
-import nl.rubixstudios.gangsturfs.commands.player.*;
-import nl.rubixstudios.gangsturfs.data.Config;
+import nl.rubixstudios.gangsturfs.commands.admin.GangTurfsCommand;
 import nl.rubixstudios.gangsturfs.utils.ManagerEnabler;
 import nl.rubixstudios.gangsturfs.utils.nms.NmsUtils;
 import org.bukkit.command.CommandMap;
@@ -21,9 +19,7 @@ public class CommandManager implements ManagerEnabler {
         this.commandMap = NmsUtils.getInstance().getCommandMap();
         this.commands = new ArrayList<>();
 
-        this.commands.add(new CoordsCommand());
-        this.commands.add(new GangWarsCommand());
-        this.commands.add(new PlaytimeCommand());
+        this.commands.add(new GangTurfsCommand());
 
         this.commands.forEach(this::registerCommand);
 
@@ -36,9 +32,7 @@ public class CommandManager implements ManagerEnabler {
         this.commands.clear();
     }
 
-    void registerCommand(BukkitCommand command) {
-        if(!Config.DISABLED_LAZARUS_COMMANDS.contains(command.getName())) {
-            this.commandMap.register("gang", command);
-        }
+    public void registerCommand(BukkitCommand command) {
+        this.commandMap.register("gang", command);
     }
 }

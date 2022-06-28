@@ -20,7 +20,7 @@ import java.util.Map.Entry;
 public class ListCommand extends SubCommand {
 
     public ListCommand() {
-        super("list", true);
+        super("list", "gangturfs.gang.list");
 
         this.setExecuteAsync(true);
     }

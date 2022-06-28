@@ -14,7 +14,5 @@ public class NPCCommandExecutor extends SubCommandExecutor {
 
         this.addSubCommand(new CreateNPCCommand());
         this.addSubCommand(new RemoveNPCCommand());
-
-        this.setPermission("gangmt.gnpc");
     }
 }

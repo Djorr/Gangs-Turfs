@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 public class ForceJoinCommand extends SubCommand {
 
     public ForceJoinCommand() {
-        super("forcejoin", "turtle.GANGS.forcejoin", true);
+        super("forcejoin", "gangturfs.gang.forcejoin", true);
     }
 
     @Override

@@ -24,7 +24,7 @@ public class WorldGuardUtil {
 
     public static boolean isInsideTurfRegion(Location location) {
         for (ProtectedRegion protectedRegion : GangsTurfs.getInstance().getWorldGuard().getRegionManager(location.getWorld()).getApplicableRegions(location)) {
-            if (protectedRegion.getId().startsWith(Config.TURF_REGION_START_WITH)) {
+            if (protectedRegion.getId().startsWith(Config.TURF_REGIONS_START_WITH)) {
                 return true;
             }
         }
@@ -33,7 +33,7 @@ public class WorldGuardUtil {
 
     public static ProtectedRegion getTurfRegion(Location location) {
         for (ProtectedRegion protectedRegion : GangsTurfs.getInstance().getWorldGuard().getRegionManager(location.getWorld()).getApplicableRegions(location)) {
-            if (protectedRegion.getId().startsWith(Config.TURF_REGION_START_WITH)) {
+            if (protectedRegion.getId().startsWith(Config.TURF_REGIONS_START_WITH)) {
                 return protectedRegion;
             }
         }

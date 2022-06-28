@@ -2,7 +2,7 @@ package nl.rubixstudios.gangsturfs.utils;
 
 import com.google.gson.reflect.TypeToken;
 import nl.rubixstudios.gangsturfs.combat.CombatTagObject;
-import nl.rubixstudios.gangsturfs.games.turf.TurfData;
+import nl.rubixstudios.gangsturfs.turf.TurfData;
 import nl.rubixstudios.gangsturfs.gang.Gang;
 import nl.rubixstudios.gangsturfs.gang.GangPlayer;
 import nl.rubixstudios.gangsturfs.gang.type.PlayerGang;

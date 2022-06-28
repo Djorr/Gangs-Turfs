@@ -43,13 +43,8 @@ public class JoinCommand extends SubCommand {
             return;
         }
 
-        if(gang.getMembers().size() >= Config.GANG_PLAYER_LIMIT) {
+        if(gang.getMembers().size() >= Config.GANG_MAXIMUM_MEMBERS) {
             player.sendMessage(Language.GANG_PREFIX + Language.GANGS_JOIN_GANG_FULL.replace("<gang>", gang.getName()));
-            return;
-        }
-
-        if(!Config.GANG_JOIN_WHILE_FROZEN) {
-            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_CANNOT_JOIN_WHILE_REGENERATING.replace("<gang>", gang.getName()));
             return;
         }
 

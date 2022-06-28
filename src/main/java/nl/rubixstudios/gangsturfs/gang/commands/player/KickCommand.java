@@ -38,8 +38,8 @@ public class KickCommand extends SubCommand {
 
         final Role playerRole = gang.getMember(player).getRole();
 
-        if(!playerRole.isAtLeast(Role.CAPTAIN)) {
-            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_NO_PERMISSION.replace("<role>", Role.getName(Role.CAPTAIN)));
+        if(!playerRole.isAtLeast(Role.ADVISOR)) {
+            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_NO_PERMISSION.replace("<role>", Role.getName(Role.ADVISOR)));
             return;
         }
 

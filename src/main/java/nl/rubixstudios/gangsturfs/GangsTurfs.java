@@ -14,9 +14,9 @@ import nl.rubixstudios.gangsturfs.commands.manager.SubCommandExecutor;
 import nl.rubixstudios.gangsturfs.data.Config;
 import nl.rubixstudios.gangsturfs.data.ConfigFile;
 import nl.rubixstudios.gangsturfs.data.Language;
-import nl.rubixstudios.gangsturfs.games.turf.TurfController;
-import nl.rubixstudios.gangsturfs.games.turf.TurfManager;
-import nl.rubixstudios.gangsturfs.games.turf.command.TurfCommandExecutor;
+import nl.rubixstudios.gangsturfs.turf.TurfController;
+import nl.rubixstudios.gangsturfs.turf.TurfManager;
+import nl.rubixstudios.gangsturfs.turf.command.TurfCommandExecutor;
 import nl.rubixstudios.gangsturfs.gang.GangController;
 import nl.rubixstudios.gangsturfs.gang.GangManager;
 import nl.rubixstudios.gangsturfs.gang.commands.GangCommandExecutor;
@@ -82,9 +82,9 @@ public class GangsTurfs extends JavaPlugin {
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
         this.log("&6===&e=============================================&6===");
-        this.log("- &eNaam&7: &fGangMT");
+        this.log("- &eNaam&7: &fGangs & Turfs");
         this.log("- &eVersion&7: &f" + this.getDescription().getVersion());
-        this.log("- &eAuthor&7: &fRubix Studios");
+        this.log("- &eAuthor&7: &fDjorr");
 
         try {
             this.config = new ConfigFile("config.yml");
@@ -106,7 +106,7 @@ public class GangsTurfs extends JavaPlugin {
             this.setupManagers();
         } catch(Exception e) {
             this.log("&6===&e=============================================&6===");
-            this.log("   &eError occurred while enabling GangWars. Error:");
+            this.log("   &eError occurred while enabling Gangs & Turfs. Error:");
             this.log("");
 
             e.printStackTrace();
@@ -139,11 +139,18 @@ public class GangsTurfs extends JavaPlugin {
     private void disableGameManagers() {
         this.turfController.disable();
         this.npcController.disable();
+
+        this.combatTagController.disable();
+        this.combatTagManager.disable();
+
     }
 
     private void disableCommandManagers() {
         this.commandManager.disable();
         this.gangCommandExecutor.disable();
+        this.turfCommandExecutor.disable();
+        this.combatCommandExecutor.disable();
+        this.npcCommandExecutor.disable();
     }
 
     private void beforeInit() {
@@ -161,8 +168,11 @@ public class GangsTurfs extends JavaPlugin {
 
     private void setupDatastore() {
         this.userdataController = new UserdataController();
-        new GangController();
-        new GangManager();
+
+        if (Config.GANG_ENABLED) {
+            new GangController();
+            new GangManager();
+        }
     }
 
     private void setupManagers() throws Exception {

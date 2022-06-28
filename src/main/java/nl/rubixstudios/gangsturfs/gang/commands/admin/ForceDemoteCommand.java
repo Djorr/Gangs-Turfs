@@ -13,7 +13,7 @@ import org.bukkit.command.CommandSender;
 public class ForceDemoteCommand extends SubCommand {
 
     public ForceDemoteCommand() {
-        super("forcedemote", "turtle.GANGS.forcedemote");
+        super("forcedemote", "gangturfs.gang.forcedemote");
 
         this.setExecuteAsync(true);
     }

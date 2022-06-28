@@ -27,13 +27,14 @@ public class LeaveCommand extends SubCommand {
         }
 
         if(playerGang.getMember(player).getRole() == Role.LEADER) {
-            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_LEADER_LEAVE);
+            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_LEAVE_LEADER_LEAVE);
             return;
         }
 
         if(!GangController.getInstance().leaveGang(player, playerGang)) return;
 
-        player.sendMessage(Language.GANG_PREFIX + Language.GANGS_LEFT_SELF.replace("<name>", playerGang.getName()));
-        playerGang.sendMessage(Language.GANG_PREFIX + Language.GANGS_LEFT_OTHERS.replace("<player>", player.getName()));
+        player.sendMessage(Language.GANG_PREFIX + Language.GANGS_LEAVE_LEFT_SELF.replace("<name>", playerGang.getName()));
+
+        playerGang.sendMessage(Language.GANG_PREFIX + Language.GANGS_LEAVE_LEFT_OTHERS.replace("<player>", player.getName()));
     }
 }

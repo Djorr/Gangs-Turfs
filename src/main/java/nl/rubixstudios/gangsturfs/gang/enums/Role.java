@@ -7,8 +7,10 @@ import nl.rubixstudios.gangsturfs.utils.StringUtils;
 @AllArgsConstructor
 public enum Role {
 
-    MEMBER(""),
-    CAPTAIN("*"),
+    THUG(""),
+    SUPPLIER(""),
+    HITMAN(""),
+    ADVISOR("*"),
     LEADER("**");
 
     @Getter
@@ -27,15 +29,23 @@ public enum Role {
     }
 
     public Role getPromote() {
-        if (this == Role.MEMBER) {
-            return CAPTAIN;
+        if (this == Role.THUG) {
+            return SUPPLIER;
+        } else if (this == Role.SUPPLIER) {
+            return HITMAN;
+        } else if (this == Role.HITMAN) {
+            return ADVISOR;
         }
         return null;
     }
 
     public Role getDemote() {
-        if (this == Role.CAPTAIN) {
-            return MEMBER;
+        if (this == Role.ADVISOR) {
+            return HITMAN;
+        } else if (this == Role.HITMAN) {
+            return SUPPLIER;
+        } else if (this == Role.SUPPLIER) {
+            return THUG;
         }
         return null;
     }

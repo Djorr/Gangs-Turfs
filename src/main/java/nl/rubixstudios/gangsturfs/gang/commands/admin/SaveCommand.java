@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 public class SaveCommand extends SubCommand {
 
     public SaveCommand() {
-        super("save", "gangwars.gangs.save");
+        super("save", "gangturfs.gang.save");
 
         this.setExecuteAsync(true);
     }

@@ -41,8 +41,8 @@ public class InviteCommand extends SubCommand {
             return;
         }
 
-        if(!gang.getMember(player).getRole().isAtLeast(Role.CAPTAIN)) {
-            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_NO_PERMISSION.replace("<role>", Role.getName(Role.CAPTAIN)));
+        if(!gang.getMember(player).getRole().isAtLeast(Role.ADVISOR)) {
+            player.sendMessage(Language.GANG_PREFIX + Language.GANGS_NO_PERMISSION.replace("<role>", Role.getName(Role.ADVISOR)));
             return;
         }
 
@@ -61,7 +61,7 @@ public class InviteCommand extends SubCommand {
             return;
         }
 
-        if(gang.getMembers().size() >= Config.GANG_PLAYER_LIMIT) {
+        if(gang.getMembers().size() >= Config.GANG_MAXIMUM_MEMBERS) {
             player.sendMessage(Language.GANG_PREFIX + Language.GANGS_INVITE_GANG_FULL);
             return;
         }

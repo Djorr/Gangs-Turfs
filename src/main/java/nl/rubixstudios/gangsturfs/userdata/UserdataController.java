@@ -164,55 +164,6 @@ public class UserdataController implements Listener {
         return userdata;
     }
 
-    /**
-     * Show online player statistics
-     * @param player the player to send the message towards
-     * @param userdata the userdata of the the player he wants the information from
-     */
-    public void showOnlinePlayerStatistics(Player player, Userdata userdata) {
-        final Player target = Bukkit.getPlayer(userdata.getUuid());
-
-        final List<String> showMessage = Language.IDENTITY_SEE_ID;
-
-        showMessage.forEach(line -> player.sendMessage(Color.translate(line
-                .replace("<playerName>", target.getName())
-
-                .replace("<resetted>", userdata.getStatsResetted() + "")
-                .replace("<lastresetted>", getDateFormat(userdata.getLastStatReset()) + "")
-
-                .replace("<playtime>", convertPlaytime(userdata.getOnlinePlayerTime()) + "")
-                .replace("<kills>", userdata.getKills() + "")
-                .replace("<deaths>", userdata.getDeaths() + "")
-                .replace("<kdr>", RoundUtil.roundDecimals(userdata.getKdr()) + "")
-                .replace("<firsttimejoined>", getDateFormat(userdata.getFirstTimeJoined()) + "")))
-
-        );
-    }
-
-    /**
-     * Show offline player statistics
-     * @param player the player to send the message towards
-     * @param userdata the userdata of the the player he wants the information from
-     */
-    public void showOfflinePlayerStatistics(Player player, Userdata userdata) {
-        final OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(userdata.getUuid());
-
-        final List<String> showMessage = Language.IDENTITY_SEE_ID;
-
-        showMessage.forEach(line -> player.sendMessage(Color.translate(line
-                .replace("<playerName>", offlinePlayer.getName())
-
-                .replace("<resetted>", userdata.getStatsResetted() + "")
-                .replace("<lastresetted>", getDateFormat(userdata.getLastStatReset()) + "")
-
-                .replace("<playtime>", convertPlaytime(userdata.getOfflinePlayerTime()) + "")
-                .replace("<kills>", userdata.getKills() + "")
-                .replace("<deaths>", userdata.getDeaths() + "")
-                .replace("<kdr>", RoundUtil.roundDecimals(userdata.getKdr()) + "")
-                .replace("<firsttimejoined>", getDateFormat(userdata.getFirstTimeJoined()) + "")))
-        );
-    }
-
     private String getDateFormat(long value) {
         if (value == 0) {
             return Color.translate("&eNone");
@@ -246,7 +197,7 @@ public class UserdataController implements Listener {
         this.loadUserdata(event.getUniqueId(), event.getName());
 
         if(this.getUserdata(event.getUniqueId()) == null) {
-            event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Language.USERDATA_FAILED_TO_LOAD);
+            event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, Color.translate("Your userdata could not be loaded.."));
         }
     }
 

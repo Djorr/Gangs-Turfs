@@ -25,7 +25,7 @@ public class GangPlayer {
         this.uuid = uuid;
 
         this.gangId = gang.getId();
-        this.role = Role.MEMBER;
+        this.role = Role.THUG;
     }
 
     public PlayerGang getGang() {

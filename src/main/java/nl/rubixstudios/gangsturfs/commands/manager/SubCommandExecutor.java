@@ -42,10 +42,6 @@ public class SubCommandExecutor extends BukkitCommand {
     }
 
     protected void addSubCommand(SubCommand command) {
-        if(this.isGangCommandDisabled(command.getName())) {
-            return;
-        }
-
         command.setPrefix(this.prefix);
         this.subCommands.add(command);
     }
@@ -62,10 +58,6 @@ public class SubCommandExecutor extends BukkitCommand {
         }
 
         return null;
-    }
-
-    private boolean isGangCommandDisabled(String subCommandName) {
-        return this.commandName.equals("gang") && Config.DISABLED_GANG_SUBCOMMANDS.contains(subCommandName);
     }
 
     @Override
